@@ -1,15 +1,15 @@
 import React from 'react';
-import { IoEye } from 'react-icons/io5';
+import { IoAnalytics, IoEye } from 'react-icons/io5';
 
 const DashboardCard = ({ title, logo: Logo, info, number, growth }) => {
-  // Decide text color based on growth value
+
   const growthColor = growth >= 0 ? 'text-green-500' : 'text-red-500';
 
   return (
-    <div className="bg-white rounded-xl p-5 shadow-lg">
+    <div className="bg-white rounded-xl p-5 shadow">
       <div className="flex justify-between items-center">
         <div className="flex flex-col gap-1">
-          <h1 className="text-2xl font-future">{title}</h1>
+          <h1 className="text-2xl font-future flex items-center gap-2">{title} <IoAnalytics/></h1>
           <p className="text-sm text-black flex items-center gap-1">
             <Logo /> {info}
           </p>

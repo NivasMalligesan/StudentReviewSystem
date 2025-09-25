@@ -14,7 +14,7 @@ const Navbar = () => {
     ];
 
     return (
-        <div className='w-full p-5 px-15 bg-black text-white flex items-center shadow-lg justify-center sm:justify-start gap-2 border-b-[1px] border-[#212121]'>
+        <div className='w-full p-5 px-15 bg-white text-black flex items-center shadow justify-center sm:justify-start gap-2 '>
             <h1 className='text-3xl font-semibold font-future'>InfoDox</h1>
             <span className='text-sm'>Admin</span>
 
@@ -22,14 +22,14 @@ const Navbar = () => {
                 {menuItems.map((item, index) => (
                     <Link key={index} to={item.path}>
                         <h1
-                            className={`text-gray-400 hover:text-white transition-all duration-300 cursor-pointer`}
+                            className={`text-gray-400 hover:text-black transition-all duration-300 cursor-pointer`}
                         >
                             {item.name}
                         </h1>
                     </Link>
                 ))}
 
-                <div className='bg-white flex items-center gap-2 text-black px-5 py-1 rounded'>
+                <div className='bg-black flex items-center gap-2 text-white px-5 py-1 rounded'>
                     <IoLogOutSharp size={23} />
                     <button>Logout</button>
                 </div>
