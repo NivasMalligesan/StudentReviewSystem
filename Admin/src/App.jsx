@@ -1,33 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Dashboard from './Pages/Dashboard'
+import ManageUsers from './Pages/ManageUsers'
+import { Route, Routes } from 'react-router-dom'
+import ReportedContent from './Pages/ReportedContent'
+import AddCollegeData from './Pages/AddCollegeData'
+import ReviewPage from './Pages/ReviewPage'
+import LoginPage from './Pages/LoginPage'
+import Navbar from './Components/CommonComponents/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <Navbar />
+    </div>
+      <Routes>
+        <Route path="/" element={<Dashboard />}/>
+        <Route path="/login" element={<LoginPage />}/>
+        <Route path="/manage-users" element={<ManageUsers/>}/>
+        <Route path="/reported-content" element={<ReportedContent />}/>
+        <Route path="/add-college-data" element={<AddCollegeData />}/>
+        <Route path="/review-page" element={<ReviewPage/>}/>
+        <Route path="*" element={<div>404 Not Found</div>}/>
+      </Routes>
     </>
   )
 }
