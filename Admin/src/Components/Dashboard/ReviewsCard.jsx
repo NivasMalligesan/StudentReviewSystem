@@ -1,6 +1,6 @@
  import React from 'react'
 import { Userprofile } from '../../assets/Assets'
-import { IoAddCircle } from 'react-icons/io5'
+import { IoAddCircle, IoStar } from 'react-icons/io5'
 
 const ReviewsCard = () => {
   return (
@@ -14,8 +14,8 @@ const ReviewsCard = () => {
             </div>
         </div>
             <div className='flex items-center gap-3 mt-3 sm:mt-0'>
-                <span className='bg-green-500 text-black text-xs px-4 py-1 rounded-2xl'>5.0 ★</span>
-                <button className='bg-black text-white  px-4 py-1 rounded-2xl hidden sm:flex justify-center items-center gap-2'><IoAddCircle/>Approve</button>
+                <span className='bg-green-500 text-black text-xs px-4 py-1 rounded-2xl flex items-center gap-2'>5.0 <IoStar/></span>
+                <button className='bg-black text-white  px-4 py-1 rounded-2xl hidden sm:flex justify-center items-center gap-2 cursor-pointer'><IoAddCircle/>Approve</button>
             </div>
 
         </div>
@@ -23,7 +23,7 @@ const ReviewsCard = () => {
             <p className='bg-white rounded-2xl p-5 sm:ms-10 text-sm border-[1px] border-gray-400'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto ratione amet quo laboriosam accusamus hic ab dolorum aut cumque alias libero nihil voluptatem a eveniet expedita optio iusto, quidem temporibus doloremque aliquid facilis. Dolorum quasi enim corporis eius labore fugit alias accusantium laudantium illo numquam vero aliquid, voluptates maiores minima.</p>
         </div>
         <div className='sm:hidden mt-2'>
-                <button className='  px-4 py-1 rounded-2xl w-full text-center sm:hidden bg-black text-white flex items-center justify-center gap-2'><IoAddCircle/> Approve</button>
+                <button className='  px-4 py-1 rounded-2xl w-full text-center sm:hidden bg-black text-white flex items-center justify-center gap-2 cursor-pointer'><IoAddCircle/> Approve</button>
         </div>
     </div>
   )

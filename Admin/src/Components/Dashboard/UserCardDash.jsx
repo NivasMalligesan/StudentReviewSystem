@@ -15,9 +15,9 @@ const UserCardDash = () => {
         </div>
         <div className='flex items-center gap-3 mt-3 sm:mt-0'>
            
-            <button className='bg-black text-white  px-4 py-1 rounded-2xl hidden sm:flex justify-center items-center gap-2'><IoAnalytics/>View Details</button>
+            <button className='bg-black text-white  px-4 py-1 rounded-2xl hidden sm:flex justify-center items-center gap-2 cursor-pointer' ><IoAnalytics/>View Details</button>
         </div>
-            <button className='bg-black text-white  px-4 py-1 rounded-2xl sm:hidden flex justify-center items-center gap-2'><IoAnalytics/>View Details</button>
+            <button className='bg-black text-white  px-4 py-1 rounded-2xl sm:hidden flex justify-center items-center gap-2 cursor-pointer'><IoAnalytics/>View Details</button>
 
         </div>
     </div>
