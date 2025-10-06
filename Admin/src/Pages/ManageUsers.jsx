@@ -1,35 +1,71 @@
+import React, { useState } from 'react';
+import FilterUser from '../Components/UsersComponents/FilterUser';
+import UserProfileCard from '../Components/UsersComponents/UserProfileCard';
+import { Userprofile } from '../assets/Assets';
 
-import { IoSearch, IoSearchCircle } from 'react-icons/io5'
-import Usercard from '../Components/UsersComponents/Usercard'
-import DetailedUser from '../Components/UsersComponents/DetailedUser'
 const ManageUsers = () => {
-  return (
-   <div className="p-5 mx-5 h-full">
-         <h1 className="text-2xl font-future">Manage Users Page</h1>
-         <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 '>
-          <div className='flex flex-col bg-white p-5 rounded-2xl'>
-            <form action="" className='flex gap-2'>
-            <input type="text" className='w-full border border-gray-300 rounded-md p-2' placeholder='Search users...' />
-            <button className='bg-black text-white px-4 py-1 rounded-md flex items-center gap-2 justify-center text-center'><IoSearch/> Search</button>
-            </form>
-          <div className="flex flex-col gap-4 overflow-y-auto max-h-[600px] mt-5 hide-scrollbar bg-white rounded-2xl p-2 " >
-            <Usercard/>
-            <Usercard/>
-            <Usercard/>
-            <Usercard/>
-            <Usercard/>
-            <Usercard/>
-            <Usercard/>
-            <Usercard/>
-            <Usercard/>
-          </div>
-          </div>
-          <div className='flex flex-col gap-4 overflow-y-auto max-h-[600px] hide-scrollbar bg-white rounded-2xl p-2 '>
-            <DetailedUser/>
-          </div>
-         </div>
-       </div>
-  )
-}
+  const [filters, setFilters] = useState({});
+  const [users, setUsers] = useState([
+    { img: Userprofile, name: 'Nivas', college: 'Bannari Amman Institute of Technology - Sathyamangalam', branch: 'Computer Science', reviewCount: 120, userVerified: false, joinDate: '2023-05-12' },
+    { img: Userprofile, name: 'Niva', college: 'Bannari Amman Institute of Technology - Sathyamangalam', branch: 'Computer Science', reviewCount: 120, userVerified: false, joinDate: '2023-06-01' },
+    { img: Userprofile, name: 'Anitha', college: 'PSG College of Technology - Coimbatore', branch: 'Electronics & Communication', reviewCount: 85, userVerified: true, joinDate: '2022-08-15' },
+    { img: Userprofile, name: 'Rahul', college: 'Kumaraguru College of Technology - Coimbatore', branch: 'Information Technology', reviewCount: 200, userVerified: false, joinDate: '2021-11-10' },
+    { img: Userprofile, name: 'Mythili', college: 'VIT - Vellore', branch: 'Computer Science', reviewCount: 50, userVerified: true, joinDate: '2023-01-20' },
+    { img: Userprofile, name: 'Karthik', college: 'SRM Institute of Science and Technology - Chennai', branch: 'Mechanical Engineering', reviewCount: 110, userVerified: true, joinDate: '2022-03-05' },
+  ]);
 
-export default ManageUsers
+  // ✅ Handle Approve
+  const handleApprove = (name) => {
+    setUsers((prev) =>
+      prev.map((user) =>
+        user.name === name ? { ...user, userVerified: true } : user
+      )
+    );
+  };
+
+  // ✅ Handle Remove
+  const handleRemove = (name) => {
+    setUsers((prev) => prev.filter((user) => user.name !== name));
+  };
+
+  // ✅ Apply filters
+  const filteredUsers = users.filter((user) => {
+    if (filters.name && !user.name.toLowerCase().includes(filters.name.toLowerCase())) return false;
+    if (filters.college && !user.college.toLowerCase().includes(filters.college.toLowerCase())) return false;
+    if (filters.minReviews && user.reviewCount < filters.minReviews) return false;
+    if (filters.userVerified && !user.userVerified) return false;
+    return true;
+  });
+
+  return (
+    <div className="p-5 sm:mx-5 ">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+        {/* Filter */}
+        <div className="col-span-1 w-full bg-white shadow text-black rounded-xl p-5">
+          <FilterUser onFilterChange={setFilters} />
+        </div>
+
+        {/* Users */}
+        <div className="col-span-3 w-full sm:p-5">
+          <h1 className="text-xl font-future">Manage Users</h1>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 h-[500px] overflow-y-auto hide-scrollbar rounded-2xl">
+            {filteredUsers.length > 0 ? (
+              filteredUsers.map((user, index) => (
+                <UserProfileCard
+                  key={index}
+                  {...user}
+                  onApprove={() => handleApprove(user.name)}
+                  onRemove={() => handleRemove(user.name)}
+                />
+              ))
+            ) : (
+              <p className="text-gray-500 col-span-full">No users match the filter criteria.</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ManageUsers;

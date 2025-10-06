@@ -1,6 +1,6 @@
 import React from 'react'
 import { Userprofile } from '../../assets/Assets'
-import { IoAddCircle, IoAnalytics } from 'react-icons/io5'
+import { IoAnalytics } from 'react-icons/io5'
 
 const UserCardDash = () => {
   return (
