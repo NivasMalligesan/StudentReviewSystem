@@ -1,8 +1,10 @@
 import React from 'react'
-
+import CollegeSelector from '../Components/AddCollegeComponents/Addcollege'
 const AddCollegeData = () => {
   return (
-    <div>AddCollegeData</div>
+    <>
+    <CollegeSelector />
+    </>
   )
 }
 

@@ -7,6 +7,7 @@ import AddCollegeData from './Pages/AddCollegeData'
 import ReviewPage from './Pages/ReviewPage'
 import LoginPage from './Pages/LoginPage'
 import Navbar from './Components/CommonComponents/Navbar'
+import AddCollege from './Components/AddCollegeComponents/Addcollege'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/add-college-data" element={<AddCollegeData />}/>
         <Route path="/review-page" element={<ReviewPage/>}/>
         <Route path="*" element={<div>404 Not Found</div>}/>
+
       </Routes>
     </>
   )

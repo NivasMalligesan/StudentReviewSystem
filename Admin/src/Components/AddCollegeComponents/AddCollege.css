@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    background-color: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.page-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Form Section */
+.form-section {
+    flex: 1;
+    min-width: 350px;
+    max-width: 450px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.add-college-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.add-college-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.add-college-form input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.inline-inputs {
+    display: flex;
+    gap: 15px;
+}
+
+.add-college-form button {
+    padding: 12px;
+    background-color: #0f1011;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+
+/* College Card Grid Section */
+.grid-section {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.college-card {
+    position: relative; /* Crucial for the overlay effect */
+    border-radius: 12px;
+    overflow: hidden; /* Hides parts of the overlay that stick out */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    aspect-ratio: 3 / 2; /* Maintains a consistent shape */
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the card */
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Aligns name to the bottom */
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+.card-name {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card-details {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.4s ease;
+    margin-top: 10px;
+}
+
+.card-details p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+}
+
+/* THE HOVER EFFECT */
+.college-card:hover .card-details {
+    opacity: 1; /* Show details on hover */
+}
+
+.college-card:hover .card-image {
+    transform: scale(1.1); /* Zoom the image slightly */
+    filter: brightness(0.8); /* Dim the image */
+}
+
+.college-card:hover .card-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+}
+
+
+/* Popup Message Styles */
+.popup-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 1000;
+}
+
+.popup-success { background-color: #28a745; }
+.popup-error { background-color: #dc3545; }
